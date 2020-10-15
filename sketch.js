@@ -19,16 +19,19 @@ function setup() {
 	//Create the Bodies Here.
 	
 	roof = new Roof();
-	ball = new Ball(300,500);
-	ball2 = new Ball(340,500);
-	ball3 = new Ball(380,500);
-	ball4 = new Ball(420,500);
-	ball5 = new Ball(460,500);
-	rope1 = new Chain(ball.body,roof.body,-80,0);
-	rope2 = new Chain(ball2.body,roof.body,-40,0);
+	bobDiameter=40;
+	startBobPositionX=width/2;
+	startBobPositionY=height/4+500;
+	ball = new Ball(startBobPositionX-bobDiameter*2,startBobPositionY,500);
+	ball2 = new Ball(startBobPositionX-bobDiameter,startBobPositionY,500);
+	ball3 = new Ball(startBobPositionX,startBobPositionY,500);
+	ball4 = new Ball(startBobPositionX+bobDiameter,startBobPositionY,500);
+	ball5 = new Ball(startBobPositionX+bobDiameter*2,startBobPositionY,500);
+	rope1 = new Chain(ball.body,roof.body,-bobDiameter*2,0);
+	rope2 = new Chain(ball2.body,roof.body,-bobDiameter,0);
 	rope3 = new Chain(ball3.body,roof.body,0,0);
-	rope4 = new Chain(ball4.body,roof.body,40,0);
-	rope5 = new Chain(ball5.body,roof.body,80,0);
+	rope4 = new Chain(ball4.body,roof.body,bobDiameter,0);
+	rope5 = new Chain(ball5.body,roof.body,bobDiameter*2,0);
 	
 
 	Engine.run(engine);
@@ -58,7 +61,7 @@ function draw() {
 }
 function keyPressed(){
 	if(keyCode===LEFT_ARROW){
-		Matter.Body.applyForce(ball.body,ball.body.position,{x:-2,y:-2})
+		Matter.Body.applyForce(ball.body,ball.body.position,{x:-50,y:-45})
 	}
 }
 
